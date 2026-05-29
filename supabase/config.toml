@@ -1,0 +1,79 @@
+project_id = "rzbtuvuqtuhjfkhgckwp"
+
+[functions.admin-reset-user-password]
+verify_jwt = false
+
+[functions.receive-email]
+verify_jwt = false
+
+[functions.send-company-invitation]
+verify_jwt = true
+
+[functions.send-password-reset]
+verify_jwt = false
+
+[functions.send-password-otp]
+verify_jwt = false
+
+[functions.verify-password-otp]
+verify_jwt = false
+
+[functions.create-member-invitation]
+verify_jwt = true
+
+[functions.complete-member-invitation]
+verify_jwt = false
+
+[functions.resend-member-invitation]
+verify_jwt = true
+
+[functions.accept-company-invitation]
+verify_jwt = false
+
+[functions.fetch-link-preview]
+verify_jwt = false
+
+[functions.process-event-registration]
+verify_jwt = false
+
+[functions.send-whatsapp]
+verify_jwt = true
+
+[functions.send-bulk-whatsapp]
+verify_jwt = true
+
+[functions.send-email]
+verify_jwt = true
+
+[functions.send-bulk-email]
+verify_jwt = true
+
+[functions.receive-email-events]
+verify_jwt = false
+
+[functions.parse-email-list]
+verify_jwt = true
+
+[functions.parse-whatsapp-list]
+verify_jwt = true
+
+[functions.hard-delete-associations]
+verify_jwt = true
+
+[functions.hard-delete-companies]
+verify_jwt = true
+
+[functions.hard-delete-users]
+verify_jwt = true
+
+[functions.export-table-csv]
+verify_jwt = false
+
+[functions.create-razorpay-order]
+verify_jwt = false
+
+[functions.verify-razorpay-payment]
+verify_jwt = false
+
+[functions.razorpay-webhook]
+verify_jwt = false
