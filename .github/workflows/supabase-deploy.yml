@@ -1,4 +1,4 @@
-﻿name: Deploy Supabase
+name: Deploy Supabase
 
 on:
   workflow_dispatch:
@@ -32,7 +32,7 @@ jobs:
           versions=$(ls supabase/migrations 2>/dev/null | sed 's/_.*//' | sort -u | awk '$1 <= "20260513150000"')
           if [ -z "$versions" ]; then echo "no legacy migrations"; exit 0; fi
           values=$(echo "$versions" | awk 'BEGIN{ORS=""} {printf (NR==1?"":",") "(\x27" $1 "\x27)"}')
-          sql="INSERT INTO supabase_migrations.schema_migrations(version) VALUES $values ON CONFLICT DO NOTHING;"
+          sql="CREATE SCHEMA IF NOT EXISTS supabase_migrations; CREATE TABLE IF NOT EXISTS supabase_migrations.schema_migrations(version text NOT NULL PRIMARY KEY, statements text[], name text); INSERT INTO supabase_migrations.schema_migrations(version) VALUES $values ON CONFLICT DO NOTHING;"
           body=$(jq -nc --arg q "$sql" '{query:$q}')
           curl -sS -X POST "https://api.supabase.com/v1/projects/$SUPABASE_PROJECT_ID/database/query" -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" -H "Content-Type: application/json" -d "$body"
           echo
